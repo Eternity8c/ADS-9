@@ -14,7 +14,6 @@ class PMTree {
  private:
     std::vector<std::unique_ptr<Node>> roots;
     std::vector<char> alphabet;
-    
     void buildTree(Node* node, std::vector<char> remaining);
     bool findPermutation(Node* node, int& counter, std::vector<char>& current,
                         std::vector<char>& result, int level);
@@ -22,14 +21,11 @@ class PMTree {
  public:
     explicit PMTree(const std::vector<char>& input);
     ~PMTree() = default;
-    
     void traverse(Node* node, std::vector<char>& current,
                 std::vector<std::vector<char>>& result);
-    
     const std::vector<std::unique_ptr<Node>>& getRoots() const {
         return roots;
     }
-    
     const std::vector<char>& getAlphabet() const {
         return alphabet;
     }
