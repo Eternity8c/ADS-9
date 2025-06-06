@@ -4,6 +4,9 @@
 #include <fstream>
 #include <locale>
 #include <cstdlib>
+#include <vector>
+#include <memory>
+#include <utility>
 #include "tree.h"
 
 PMTree::PMTree(const std::vector<char>& input) : alphabet(input) {
@@ -89,7 +92,6 @@ std::vector<char> getPerm2(const PMTree& tree, int num) {
     for (int i = 0; i < n; ++i) {
         int groupSize = 1;
         for (int j = 2; j <= n - i - 1; ++j) groupSize *= j;
-        
         int index = currentNum / groupSize;
         result.push_back(remaining[index]);
         remaining.erase(remaining.begin() + index);
