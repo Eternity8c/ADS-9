@@ -6,36 +6,36 @@
 
 struct Node {
     char val;
-    std::vector<std::unique_ptr<Node>> childNodes;
+    std::vector<std::unique_ptr<Node>> children;
     explicit Node(char v) : val(v) {}
 };
 
-class PermutationTree {
+class PMTree {
  private:
-    std::vector<std::unique_ptr<Node>> rootNodes;
-    std::vector<char> symbolSet;
+    std::vector<std::unique_ptr<Node>> roots;
+    std::vector<char> alphabet;
     
-    void buildPermutationTree(Node* currentNode, std::vector<char> remainingSymbols);
-    bool findPermutationByNumber(Node* node, int& counter, std::vector<char>& currentPerm,
-                               std::vector<char>& resultPerm, int level);
+    void buildTree(Node* node, std::vector<char> remaining);
+    bool findPermutation(Node* node, int& counter, std::vector<char>& current,
+                        std::vector<char>& result, int level);
 
  public:
-    explicit PermutationTree(const std::vector<char>& inputSet);
-    ~PermutationTree() = default;
+    explicit PMTree(const std::vector<char>& input);
+    ~PMTree() = default;
     
-    void collectAllPermutations(Node* node, std::vector<char>& currentPath,
-                              std::vector<std::vector<char>>& allPermutations);
+    void traverse(Node* node, std::vector<char>& current,
+                std::vector<std::vector<char>>& result);
     
-    const std::vector<std::unique_ptr<Node>>& getRootNodes() const {
-        return rootNodes;
+    const std::vector<std::unique_ptr<Node>>& getRoots() const {
+        return roots;
     }
     
-    const std::vector<char>& getSymbolSet() const {
-        return symbolSet;
+    const std::vector<char>& getAlphabet() const {
+        return alphabet;
     }
 };
 
-std::vector<std::vector<char>> getAllPossiblePermutations(const PermutationTree& tree);
-std::vector<char> getPermutationByIndex1(const PermutationTree& tree, int index);
-std::vector<char> getPermutationByIndex2(const PermutationTree& tree, int index);
+std::vector<std::vector<char>> getAllPerms(const PMTree& tree);
+std::vector<char> getPermByNumber1(const PMTree& tree, int num);
+std::vector<char> getPermByNumber2(const PMTree& tree, int num);
 #endif  // INCLUDE_TREE_H_
