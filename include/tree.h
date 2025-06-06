@@ -36,6 +36,6 @@ class PMTree {
 };
 
 std::vector<std::vector<char>> getAllPerms(const PMTree& tree);
-std::vector<char> getPermByNumber1(const PMTree& tree, int num);
-std::vector<char> getPermByNumber2(const PMTree& tree, int num);
+std::vector<char> getPerm1(const PMTree& tree, int num);
+std::vector<char> getPerm2(const PMTree& tree, int num);
 #endif  // INCLUDE_TREE_H_
